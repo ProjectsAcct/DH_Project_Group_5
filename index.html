@@ -5,58 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Deportation DH Project</title>
 
-  <!-- Fonts (optional): you can remove if you want system fonts only -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --ink:#111827;        /* dark gray for text */
-      --bg:#0b1220;         /* deep header overlay */
-      --brand:#2563eb;      /* accent (blue) */
-      --muted:#6b7280;      /* secondary text */
-      --paper:#f8fafc;      /* page background */
-      --max:1100px;
+      --ink:#111827; --bg:#0b1220; --brand:#2563eb; --muted:#6b7280; --paper:#f8fafc; --max:1100px;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);scroll-behavior:smooth}
 
     /* Top bar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(10px);
-      background:rgba(255,255,255,.85);
-      border-bottom:1px solid #e5e7eb;
-    }
-    .nav{
-      max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between;
-      padding:12px 20px;
-    }
+    .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px); background:rgba(255,255,255,.85); border-bottom:1px solid #e5e7eb;}
+    .nav{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; padding:12px 20px;}
     .brand{font-weight:800; letter-spacing:.3px}
     .links{display:flex; gap:18px}
-    .links a{
-      text-decoration:none; color:var(--ink); font-weight:600; padding:6px 10px; border-radius:8px;
-    }
+    .links a{text-decoration:none; color:var(--ink); font-weight:600; padding:6px 10px; border-radius:8px;}
     .links a.active, .links a:hover{background:#eaf1ff;color:#1d4ed8}
 
     /* Hero */
-    .hero{
-      position:relative; height:70vh; min-height:480px; display:grid; place-items:center; color:#fff;
-      background:linear-gradient(to bottom, rgba(7,14,26,.2), rgba(7,14,26,.7)),
-                 url("images/hero-map.jpg") center/cover no-repeat;
-    }
-    .hero .overlay{
-      text-align:center; max-width:900px; padding:0 20px;
-    }
+    .hero{position:relative; height:70vh; min-height:480px; display:grid; place-items:center; color:#fff;
+      background:linear-gradient(to bottom, rgba(7,14,26,.2), rgba(7,14,26,.7)), url("images/hero-map.jpg") center/cover no-repeat;}
+    .hero .overlay{text-align:center; max-width:900px; padding:0 20px;}
     .kicker{letter-spacing:1.5px; font-weight:700; opacity:.9}
     .title{font-size:clamp(40px,7vw,92px); line-height:1; font-weight:800; margin:.2em 0}
     .subtitle{font-size:clamp(18px,2.3vw,28px); font-weight:600; opacity:.95}
-    .chevron{
-      position:absolute; bottom:22px; left:50%; transform:translateX(-50%);
-      width:40px; height:40px; border-radius:50%; border:2px solid rgba(255,255,255,.8);
-      display:grid; place-items:center; transition:all .2s ease;
-    }
+    .chevron{position:absolute; bottom:22px; left:50%; transform:translateX(-50%); width:40px; height:40px; border-radius:50%;
+      border:2px solid rgba(255,255,255,.8); display:grid; place-items:center; transition:all .2s ease;}
     .chevron:hover{transform:translateX(-50%) translateY(2px)}
     .chevron span{font-size:22px}
 
@@ -66,20 +41,26 @@
     .section-title{font-size:28px; margin:0 0 10px; font-weight:800}
     .section-kicker{color:var(--muted); font-weight:600; margin-bottom:18px}
 
-    .grid{
-      display:grid; gap:22px; grid-template-columns: repeat(12, 1fr);
-    }
-    .card{
-      grid-column: span 12;
-      background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:18px 18px;
-      box-shadow:0 6px 18px rgba(15,23,42,.06);
-    }
-    @media(min-width:900px){
-      .card.half{grid-column: span 6}
-      .card.third{grid-column: span 4}
-    }
+    .grid{display:grid; gap:22px; grid-template-columns: repeat(12, 1fr);}
+    .card{grid-column: span 12; background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:18px;
+      box-shadow:0 6px 18px rgba(15,23,42,.06);}
+    @media(min-width:900px){ .card.half{grid-column: span 6} .card.third{grid-column: span 4} }
     .card h3{margin:0 0 8px; font-size:20px}
     .muted{color:var(--muted)}
+
+    /* Team cards */
+    .team-grid{display:grid; gap:22px; grid-template-columns: repeat(1, 1fr);}
+    @media(min-width:700px){ .team-grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media(min-width:1000px){ .team-grid{ grid-template-columns: repeat(3, 1fr);} }
+
+    .person-card{background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:20px;
+      box-shadow:0 6px 18px rgba(15,23,42,.06); display:flex; gap:16px; align-items:flex-start;}
+    .avatar{width:84px; height:84px; border-radius:50%; flex:0 0 84px; object-fit:cover; border:2px solid #eef2ff; background:#e5e7eb;}
+    .person-name{margin:0; font-size:18px; font-weight:800}
+    .person-role{margin:2px 0 0; font-weight:700; color:#1d4ed8}
+    .person-bio{margin:.5rem 0 0; color:var(--ink); line-height:1.45}
+    .tagline{margin-top:8px; color:var(--muted); font-size:13px}
+    .badge{background:#eaf1ff; color:#1d4ed8; font-weight:700; padding:2px 8px; border-radius:999px; font-size:12px}
 
     /* Footer */
     footer{border-top:1px solid #e5e7eb; background:#fff}
@@ -94,7 +75,8 @@
       <div class="brand">UCLA DH 101 · Deportation</div>
       <div class="links">
         <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
+        <a href="#goals">Goals</a>
+        <a href="#about">About Us</a>
         <a href="#critique">Data Critique</a>
         <a href="#analysis">Analysis</a>
         <a href="#sources">Sources</a>
@@ -106,30 +88,89 @@
   <header id="home" class="hero" role="banner" aria-label="Project hero">
     <div class="overlay">
       <div class="kicker">UCLA DIGITAL HUMANITIES 101</div>
-      <h1 class="title">REGIONAL REALITIES</h1>
-      <p class="subtitle">Deportation data, narratives, and the limits of quantification</p>
+      <h1 class="title">Deportation Data Analysis</h1>
+      <p class="subtitle">Diving beyond the numbers</p>
     </div>
-    <a href="#about" class="chevron" aria-label="Scroll to About"><span>⌄</span></a>
+    <a href="#goals" class="chevron" aria-label="Scroll to Goals"><span>⌄</span></a>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" aria-labelledby="about-title">
+  <!-- (NEW) PROJECT GOALS – blank placeholder -->
+  <section id="goals" aria-labelledby="goals-title">
     <div class="wrap">
       <p class="section-kicker">Overview</p>
-      <h2 id="about-title" class="section-title">About Me & Project</h2>
-      <div class="grid">
-        <article class="card half">
-          <h3>About Me</h3>
-          <p>Hello! I’m <strong>[Your Name]</strong>, studying Digital Humanities at UCLA. I’m investigating how deportation is counted, categorized, and visualized—and what stories those choices tell or silence.</p>
-          <p class="muted">Email • Portfolio • GitHub (optional links)</p>
+      <h2 id="goals-title" class="section-title">Project Goals</h2>
+      <div class="card" style="min-height:120px;">
+        <!-- Leave this empty for now. Add your bullets/paragraphs later. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <p class="section-kicker">Team</p>
+      <h2 id="about-title" class="section-title">About Us</h2>
+
+      <!-- Team cards -->
+      <div class="team-grid" role="list">
+        <article class="person-card" role="listitem">
+          <img class="avatar" src="images/headshot-default.png" alt="Headshot placeholder for Dylan Brunkhardt">
+          <div>
+            <h3 class="person-name">Dylan Brunkhardt</h3>
+            <p class="person-role">Project Manager</p>
+            <p class="person-bio">Third-year Pre-Business Economics (Accounting minor in progress). Managed timeline, ensured guidelines compliance, led communications, and delegated tasks.</p>
+            <div class="tagline"><span class="badge">PM</span> coordination • deadlines • scope</div>
+          </div>
         </article>
-        <article class="card half">
-          <h3>Project Goals</h3>
-          <ul>
-            <li>Contextualize deportation metrics with historical & ethical framing.</li>
-            <li>Surface omissions/biases in data collection and visualization.</li>
-            <li>Propose humane, transparent design patterns for public audiences.</li>
-          </ul>
+
+        <article class="person-card" role="listitem">
+          <img class="avatar" src="images/headshot-default.png" alt="Headshot placeholder for Kenneth Tran">
+          <div>
+            <h3 class="person-name">Kenneth Tran</h3>
+            <p class="person-role">Data Specialist</p>
+            <p class="person-bio">Third-year Communications, Entrepreneurship minor. Led data cleaning, standardization, and refinement for accurate analysis.</p>
+            <div class="tagline"><span class="badge">Data</span> cleaning • standardization • QA</div>
+          </div>
+        </article>
+
+        <article class="person-card" role="listitem">
+          <img class="avatar" src="images/headshot-default.png" alt="Headshot placeholder for Yuexi Liao">
+          <div>
+            <h3 class="person-name">Yuexi Liao</h3>
+            <p class="person-role">Editor</p>
+            <p class="person-bio">Third-year Pre-Math & Economics. Ensured cohesive and accurate site content, aligning narrative, visuals, and citations.</p>
+            <div class="tagline"><span class="badge">Editor</span> cohesion • clarity • tone</div>
+          </div>
+        </article>
+
+        <article class="person-card" role="listitem">
+          <img class="avatar" src="images/headshot-default.png" alt="Headshot placeholder for Yitian Hu">
+          <div>
+            <h3 class="person-name">Yitian Hu</h3>
+            <p class="person-role">Data</p>
+            <p class="person-bio">Third-year Economics with strong interest in data analysis and visualization; supported pipeline and exploratory analysis.</p>
+            <div class="tagline"><span class="badge">Analysis</span> EDA • charts • summaries</div>
+          </div>
+        </article>
+
+        <article class="person-card" role="listitem">
+          <img class="avatar" src="images/headshot-default.png" alt="Headshot placeholder for Yahir Perez">
+          <div>
+            <h3 class="person-name">Yahir Perez</h3>
+            <p class="person-role">Content Developer</p>
+            <p class="person-bio">Third-year Sociology aiming for marketing. Integrated the group’s argument, maps, and visuals into a clear story.</p>
+            <div class="tagline"><span class="badge">Content</span> narrative • mapping • visuals</div>
+          </div>
+        </article>
+
+        <article class="person-card" role="listitem">
+          <img class="avatar" src="images/headshot-default.png" alt="Headshot placeholder for Rohan Akurathi">
+          <div>
+            <h3 class="person-name">Rohan Akurathi</h3>
+            <p class="person-role">Web Developer</p>
+            <p class="person-bio">Fourth-year Statistics & Data Science. Built the site’s structure and styling, assembling ideas into a cohesive experience.</p>
+            <div class="tagline"><span class="badge">Dev</span> layout • styling • deployment</div>
+          </div>
         </article>
       </div>
     </div>
@@ -169,8 +210,7 @@
       <div class="grid">
         <article class="card half">
           <h3>Key Trend 1</h3>
-          <p class="muted">Short description of a core pattern with a takeaway sentence. (You can embed images or iframes here.)</p>
-          <!-- <img src="images/chart1.png" alt="Trend chart"> -->
+          <p class="muted">Short description of a core pattern with a takeaway sentence. (Embed images/iframes here.)</p>
         </article>
         <article class="card half">
           <h3>Key Trend 2</h3>
@@ -209,14 +249,11 @@
     // highlight active link on scroll
     const sections = [...document.querySelectorAll("section, header.hero")];
     const links = [...document.querySelectorAll(".links a")];
-
     const spy = () => {
       const pos = window.scrollY + 120;
       let current = "#home";
-      sections.forEach(s=>{
-        if (pos >= s.offsetTop) current = "#" + (s.id || "home");
-      });
-      links.forEach(a=>a.classList.toggle("active", a.getAttribute("href")===current));
+      sections.forEach(s => { if (pos >= s.offsetTop) current = "#" + (s.id || "home"); });
+      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === current));
     };
     window.addEventListener("scroll", spy);
     window.addEventListener("load", spy);
