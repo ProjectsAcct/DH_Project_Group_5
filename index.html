@@ -65,15 +65,15 @@
 
     .bib-grid{display:flex; flex-direction:column; gap:14px;}
     .bib-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.25);}
-    .bib-head{padding:14px 16px; display:flex; align-items:flex-start; gap:12px; background:rgba(255,255,255,.02);}
-    .cite-text{color:#e5e7eb; font-weight:700; line-height:1.5; flex:1;}
-    .peek{border:none; background:linear-gradient(120deg, rgba(185,28,28,.9), rgba(255,255,255,.15)); color:#fef2f2; font-weight:800; letter-spacing:.3px; padding:10px 14px; border-radius:12px; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 8px 22px rgba(0,0,0,.35); transition:transform .15s ease, box-shadow .15s ease;}
+    .bib-head{padding:14px 16px; display:flex; align-items:flex-start; gap:10px; background:rgba(255,255,255,.02); cursor:pointer;}
+    .cite-text{color:#e5e7eb; font-weight:700; line-height:1.45; flex:1; min-width:0; font-size:15.5px; word-break:break-word;}
+    .peek{border:none; background:linear-gradient(120deg, rgba(185,28,28,.9), rgba(255,255,255,.15)); color:#fef2f2; font-weight:800; letter-spacing:.3px; padding:9px 12px; border-radius:12px; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 8px 22px rgba(0,0,0,.35); transition:transform .15s ease, box-shadow .15s ease; align-self:center; white-space:nowrap;}
     .peek:hover{transform:translateY(-1px); box-shadow:0 12px 28px rgba(0,0,0,.4);}
     .peek .carat{display:inline-block; transition:transform .2s ease;}
     .bib-card.expanded .peek .carat{transform:rotate(90deg);}
     .bib-body{max-height:0; overflow:hidden; padding:0 16px 0 16px; color:#e5e7eb; transition:max-height .35s ease, opacity .35s ease, padding .35s ease; opacity:0;}
     .bib-card.expanded .bib-body{max-height:500px; padding:0 16px 18px 16px; opacity:1;}
-    .bib-anno{margin:8px 0 0; line-height:1.6;}
+    .bib-anno{margin:8px 0 0; line-height:1.55; font-size:16px;}
 
     .mla {list-style:none; padding-left:0; margin:0;}
     .mla li{margin:0 0 18px 0;}
@@ -326,7 +326,7 @@
 
       <article class="bib-card">
         <header class="bib-head">
-          <span class="cite-text">Hernandez, Kelly Lytle. Migra! A History of the U.S. Border Patrol. University of California Press, 2010. https://www.ucpress.edu/book/9780520266414/migra.</span>
+          <span class="cite-text">Hernández, Kelly Lytle. Migra! A History of the U.S. Border Patrol. University of California Press, 2010. https://www.ucpress.edu/book/9780520266414/migra.</span>
           <button class="peek" type="button"><span class="carat">▶</span><span class="label">Notes</span></button>
         </header>
         <div class="bib-body">
@@ -336,11 +336,11 @@
 
       <article class="bib-card">
         <header class="bib-head">
-          <span class="cite-text">Hernandez, Jose Angel. “Contemporary Deportation Raids and Historical Memory: Mexican Expulsions in the Nineteenth Century.” Aztlán, vol. 35, no. 2, 2010, pp. 115–42. https://search.library.ucla.edu/permalink/01UCS_LAL/192ecse/cdi_ingenta_journals_ic_csrc_00052604_v35n2_20211006_1656_default_tar_gz_s6.</span>
+          <span class="cite-text">Hernández, José Angel. “Contemporary Deportation Raids and Historical Memory: Mexican Expulsions in the Nineteenth Century.” Aztlán, vol. 35, no. 2, 2010, pp. 115–42. https://search.library.ucla.edu/permalink/01UCS_LAL/192ecse/cdi_ingenta_journals_ic_csrc_00052604_v35n2_20211006_1656_default_tar_gz_s6.</span>
           <button class="peek" type="button"><span class="carat">▶</span><span class="label">Notes</span></button>
         </header>
         <div class="bib-body">
-          <p class="bib-anno">Connects nineteenth-century anti-Mexican expulsions to later deportation practices, arguing repeated expulsions created a “historical memory” of vulnerability for Mexican American communities. Shows how early regional expulsions shaped distrust and collective identity, informing impacts around 1892–1921.</p>
+          <p class="bib-anno">Hernandez looks at the history of anti-Mexican sentiment and organized expulsions, mostly in the 19th century, and connects them to later 20th and 21st century deportation practices. This article argues that these repeated expulsions created a “historical memory” of vulnerability for Mexican American communities. By focusing on regional expulsions that happened before federal deportations were fully enforced in 1892-1921, Hernandez shows how these communities were already traumatized and wary of authorities. This history shaped collective identity and fostered deep distrust of the government. The article is helpful in understanding the impact on Mexican immigrant communities around the period of our research question. It shows how people were displaced and how communities organized under policies of the federal government.</p>
         </div>
       </article>
 
@@ -468,13 +468,17 @@
   window.addEventListener("scroll",spy);window.addEventListener("load",spy);
 
   const bibHeads=[...document.querySelectorAll(".bib-head")];
+  const toggleCard=(head)=>{
+    const card=head.parentElement;
+    const label=head.querySelector(".label");
+    card.classList.toggle("expanded");
+    label.textContent=card.classList.contains("expanded")?"Hide":"Notes";
+  };
   bibHeads.forEach(head=>{
+    head.addEventListener("click",()=>toggleCard(head));
     head.querySelector(".peek").addEventListener("click",(e)=>{
       e.stopPropagation();
-      const card=head.parentElement;
-      const label=head.querySelector(".label");
-      card.classList.toggle("expanded");
-      label.textContent=card.classList.contains("expanded")?"Hide":"Notes";
+      toggleCard(head);
     });
   });
 </script>
