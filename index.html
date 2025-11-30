@@ -35,11 +35,14 @@
     .chevron span{font-size:22px}
 
     section{padding:80px 20px; position:relative;}
+    section + section{margin-top:10px;}
     .wrap{max-width:var(--max); margin:auto}
     .section-title{font-size:30px; margin:0 0 10px; font-weight:800; letter-spacing:.4px;}
     .section-kicker{color:var(--brand); font-weight:700; margin-bottom:18px; letter-spacing:1px; text-transform:uppercase}
+    .section-title{border-bottom:1px solid var(--line); padding-bottom:8px;}
 
     .grid{display:grid; gap:22px; grid-template-columns: repeat(12, 1fr);}
+    .grid + .grid{margin-top:12px;}
     .card{grid-column: span 12; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px;
       box-shadow:0 12px 32px rgba(0,0,0,.25);}
     @media(min-width:900px){ .card.half{grid-column: span 6} .card.third{grid-column: span 4} }
@@ -75,10 +78,26 @@
     .bib-card.expanded .bib-body{max-height:500px; padding:0 16px 18px 16px; opacity:1;}
     .bib-anno{margin:8px 0 0; line-height:1.55; font-size:16px;}
 
+    .file-links{display:flex; gap:12px; flex-wrap:wrap; margin:10px 0 24px;}
+    .file-link{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:rgba(185,28,28,.14); border:1px solid var(--line); color:#fef2f2; text-decoration:none; font-weight:700; box-shadow:0 8px 22px rgba(0,0,0,.25);}
+    .file-link:hover{background:rgba(185,28,28,.2);}
+
+    .data-table-wrap{overflow-x:auto;}
+    .data-table{width:100%; border-collapse:collapse; font-size:13px; min-width:500px;}
+    .data-table th,.data-table td{border:1px solid var(--line); padding:6px 8px; text-align:left; color:#e5e7eb;}
+    .data-table th{background:rgba(255,255,255,.04); font-weight:800;}
+
     .mla {list-style:none; padding-left:0; margin:0;}
     .mla li{margin:0 0 18px 0;}
     .cite{display:block; padding-left:1.8em; text-indent:-1.8em; line-height:1.45;}
     .anno{margin:.35rem 0 0 0; line-height:1.5; color:var(--ink);}
+
+    .project-layout{display:flex; flex-direction:column; gap:26px; align-items:flex-start; margin-top:18px;}
+    .project-image{width:100%; max-width:280px; border-radius:14px; border:2px solid rgba(185,28,28,.7); box-shadow:0 16px 36px rgba(0,0,0,.35); object-fit:cover; margin-top:40px;}
+    .project-card{margin:8px 0 0 0; display:block; flex:1; max-width:760px;}
+    .project-copy{flex:1;}
+    .project-text{margin:0 0 14px 0; color:#e5e7eb; line-height:1.75; font-size:18px;}
+    @media(min-width:900px){ .project-layout{flex-direction:row; align-items:flex-start;} }
 
     footer{border-top:1px solid var(--line); background:var(--panel)}
     .foot{max-width:var(--max); margin:auto; padding:30px 20px; font-size:14px; color:var(--muted)}
@@ -95,7 +114,7 @@
       <a href="#goals">Research</a>
       <a href="#about">About Us</a>
       <a href="#analysis">Analysis</a>
-      <a href="#critique">Data Critique</a>
+      <a href="#critique">Data Report</a>
       <a href="#sources">Sources</a>
     </div>
   </nav>
@@ -114,10 +133,18 @@
   <div class="wrap">
     <p class="section-kicker">Context</p>
     <h2 class="section-title">Our Project</h2>
-    <div class="card">
-      <p style="margin:0; color:#e5e7eb; line-height:1.7; font-size:17px;">
-        
-      </p>
+    <div class="project-layout">
+      <img class="project-image" src="images/news_article.jpg" alt="Historic newspaper clipping on deportation">
+      <div class="card project-card">
+        <div class="project-copy">
+          <p class="project-text">
+            Immigration and deportation policy has become a topic of fierce contention within the past few years in the United States. Under the current federal administration, the United States has seen a sharp increase in deportations, with some considering them favorable and others harshly criticizing these policies. However, these policies are not new to the United States; changing deportation policies dates back centuries. Our study looks at the history of these deportations, specifically within the years 1900 to 1921, highlighting the impact they had on different communities in the U.S. The national and racial categories with the highest raw amounts of deportations were the English and Mexican, with English communities mainly residing in the Northeast and Mexican communities residing in the Southwest.
+          </p>
+          <p class="project-text" style="margin-bottom:0;">
+            Our study draws upon numerical data regarding the number of deportations and their reasons, peer-reviewed studies of their impact, congressional hearings regarding legislation, and different policies that impacted both immigration and deportations. These sources provide important context for the social and political climate of the early 20th century to better understand why these deportations occurred, and more importantly, how both the English and Mexican communities within the U.S. were affected.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -218,18 +245,93 @@
     <p class="section-kicker">Our Findings</p>
     <h2 class="section-title">Analysis & Visuals</h2>
     <div class="grid">
-      <article class="card" style="min-height:180px;"></article>
-      <article class="card" style="min-height:180px;"></article>
-      <article class="card" style="min-height:180px;"></article>
+      <article class="card" style="min-height:180px; grid-column: span 12;">
+        <h3 style="margin-top:0;">Locations of Significant Mexican and English Communities (c. 1920)</h3>
+        <div class='tableauPlaceholder' id='viz1764457327117' style='position: relative'>
+          <noscript><a href='#'><img alt='Locations of Significant Mexican and English Communities in the United States (~1920) ' src='https://public.tableau.com/static/images/7_/7_1MappingAssignment_17644572474000/Sheet1/1_rss.png' style='border: none' /></a></noscript>
+          <object class='tableauViz'  style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='7_1MappingAssignment_17644572474000/Sheet1' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/7_/7_1MappingAssignment_17644572474000/Sheet1/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+            <param name='filter' value='publish=yes' />
+          </object>
+        </div>
+        <script type='text/javascript'>
+          const divElement=document.getElementById('viz1764457327117');
+          const vizElement=divElement.getElementsByTagName('object')[0];
+          vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+          const scriptElement=document.createElement('script');
+          scriptElement.src='https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement,vizElement);
+        </script>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- 🧭 DATA CRITIQUE REPORT -->
+<!-- 🧭 DATA REPORT -->
 <section id="critique">
   <div class="wrap">
     <p class="section-kicker">Method & Ethics</p>
-    <h2 class="section-title">Data Critique Report</h2>
+    <h2 class="section-title">Data Report</h2>
+    <div class="file-links">
+      <a class="file-link" href="Datasets/Original_Dataset_Deportations.xlsx">Original Dataset</a>
+      <a class="file-link" href="Datasets/Cleaned_Dataset_Deportations.xlsx">Cleaned Dataset</a>
+    </div>
+
+    <div class="grid">
+      <article class="card half">
+        <h3>Original Dataset (first 2 rows)</h3>
+        <div class="data-table-wrap">
+          <table class="data-table" aria-label="First two rows of Original Dataset">
+            <thead>
+              <tr>
+                <th>Nameoftable</th><th>Year</th><th>categoryofpeople</th><th>nationalandracialcategories</th><th>NatandracName</th><th>Natandraciso_alpha</th><th>DeportedFrom</th><th>DeportedFromLat</th><th>DeportedFromLong</th><th>DeportedTo</th><th>DeportedToName</th><th>DeportedToiso_alpha</th><th>numberofpeople</th><th>Unnamed: 13</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1892</td><td>1892</td><td>(1yr.) Returned within of landing</td><td>Unknown</td><td>Bermuda (UK)</td><td>BMU</td><td>Baltimore, Md</td><td>39.2848882</td><td>-76.7605804</td><td>Unknown: Port of entry</td><td>—</td><td>—</td><td>5</td><td>—</td>
+              </tr>
+              <tr>
+                <td>1892</td><td>1892</td><td>(1yr.) Returned within of landing</td><td>Unknown</td><td>Bermuda (UK)</td><td>BMU</td><td>Boston, Mass</td><td>42.3145167</td><td>-71.2504659</td><td>Unknown: Port of entry</td><td>—</td><td>—</td><td>89</td><td>49729</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card half">
+        <h3>Cleaned Dataset (first 2 rows)</h3>
+        <div class="data-table-wrap">
+          <table class="data-table" aria-label="First two rows of Cleaned Dataset">
+            <thead>
+              <tr>
+                <th>Year</th><th>Reason for Deportation</th><th>National/Racial Categories</th><th>National and Racial Name</th><th>Deported From</th><th>Number of People</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1900</td><td>(1yr.) Returned within of landing</td><td>Mexican</td><td>MEXICO</td><td>Unknown: Port of entry</td><td>10</td>
+              </tr>
+              <tr>
+                <td>1900</td><td>(1yr.) Returned within of landing</td><td>English</td><td>UNITED KINGDOM</td><td>Unknown: Port of entry</td><td>38</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
 
     <div class="grid">
       <article class="card">
